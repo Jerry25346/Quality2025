@@ -1,0 +1,24 @@
+﻿# Python
+__pycache__/
+*.pyc
+
+# env
+.venv/
+venv/
+.env
+
+# data
+data/
+
+# outputs
+*.png
+*.pdf
+*.pt
+*.pth
+*.ckpt
+runs/
+outputs/
+
+# OS
+.DS_Store
+Thumbs.db
