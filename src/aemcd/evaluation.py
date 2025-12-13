@@ -118,9 +118,9 @@ def evaluate_and_report(y_true, y_pred, y_pred_adjusted=None, title="Results",y_
         cm_pa = confusion_matrix(y_true, y_pred_adjusted)
         tn2, fp2, fn2, tp2 = cm_pa.ravel()
         print(f"\n confusion matrix (Point-Adjusted):")
-        print(f"              預測")
+        print(f"              predicted")
         print(f"            Normal  Anomaly")
-        print(f"  實際 Normal   {tn2:5d}   {fp2:5d}")
+        print(f"  actual Normal   {tn2:5d}   {fp2:5d}")
         print(f"     Anomaly   {fn2:5d}   {tp2:5d}")
         print(f"  Manual PA Recall = {tp2/(tp2+fn2+1e-12):.3f}")
     # plot confusion matrix
