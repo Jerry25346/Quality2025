@@ -1,0 +1,49 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "run_baseline (cwd=data)",
+      "type": "python",
+      "request": "launch",
+      "program": "${workspaceFolder}/scripts/run_baseline.py",
+      "cwd": "${workspaceFolder}/data",
+      "env": {
+        "PYTHONPATH": "${workspaceFolder}/src"
+      },
+      "console": "integratedTerminal"
+    },
+    {
+      "name": "run_final (cwd=data)",
+      "type": "python",
+      "request": "launch",
+      "program": "${workspaceFolder}/scripts/run_final.py",
+      "cwd": "${workspaceFolder}/data",
+      "env": {
+        "PYTHONPATH": "${workspaceFolder}/src"
+      },
+      "console": "integratedTerminal"
+    },
+    {
+      "name": "run_gridsearch (cwd=data)",
+      "type": "python",
+      "request": "launch",
+      "program": "${workspaceFolder}/scripts/run_gridsearch.py",
+      "cwd": "${workspaceFolder}/data",
+      "env": {
+        "PYTHONPATH": "${workspaceFolder}/src"
+      },
+      "console": "integratedTerminal"
+    },
+    {
+      "name": "run_sanity (cwd=data)",
+      "type": "python",
+      "request": "launch",
+      "program": "${workspaceFolder}/scripts/run_sanity.py",
+      "cwd": "${workspaceFolder}/data",
+      "env": {
+        "PYTHONPATH": "${workspaceFolder}/src"
+      },
+      "console": "integratedTerminal"
+    }
+  ]
+}
