@@ -20,7 +20,7 @@ if __name__ == "__main__":
     print("AE + MCD + Shewhart/EWMA expreimemt (FINAL)")
     print("="*60)
 
-    # ---- 1. import data ----
+    # ---- import data ----
     print("\n1. import data...")
     train  = pd.read_csv("machine-1-1_train_s10.csv", header=None).values
     test   = pd.read_csv("machine-1-1_test_s10.csv",  header=None).values
@@ -47,13 +47,13 @@ if __name__ == "__main__":
     Xval_w,   _, _ = make_windows(X_val,  y=None,  win=WIN, stride=STRIDE_TE)
     Xfinal_w, _, _ = make_windows(X_final, y=None, win=WIN, stride=STRIDE_TE)
 
-    # ---- 2. Establish a basic model ----
+    # ----  Establish a basic model ----
     print("\n2. Establish a basic model...")
     input_dim = Xtr_w.shape[1]
     latent_dim = 6
     ae = Autoencoder(input_dim=input_dim, latent_dim=latent_dim, noise_std=0.03)
 
-    # ---- 3. fundemental experiment（q=0.997, λ=0.2, logic=OR）----
+    # ----  fundemental experiment（q=0.997, λ=0.2, logic=OR）----
     set_all_seeds(42)
     print("\n" + "="*60)
     print("3. fundemental experiment（q=0.997, λ=0.2, logic=OR）")
@@ -65,7 +65,7 @@ if __name__ == "__main__":
     )
     det_base.fit(Xtr_w, val_split=0.1, patience=10)
 
-    # ---- 7. Grid search（用 VAL 的 point label y_val）----
+    # ----  Grid search---
     set_all_seeds(42)
     print("\n" + "=" * 70)
     print("🔎 7.  Grid search (VAL on PA-F1 rank)")
@@ -82,7 +82,7 @@ if __name__ == "__main__":
         verbose=True
     )
 
-    # ---- 8. Final （FINAL set）----
+    #  Final （FINAL set）
     # (A) Baseline on FINAL
     pred_base_w, d_base_w, ew_base_w, re_base_w = det_base.predict(
         Xfinal_w, logic="or", return_details=True
@@ -123,7 +123,7 @@ if __name__ == "__main__":
     plot_score_hist(y_final, score_best_final, title="Best fused score (FINAL)")
     plot_monitoring_charts(d_best_point, ew_best_point, re_best_point, y_final, best_det, title_suffix="(最佳參數, FINAL)")
 
-    # ---- 9. Summary (Point-Adjusted) ----
+    # ----  Summary (Point-Adjusted) ----
     p_base, r_base, f1_base, _ = precision_recall_fscore_support(
         y_final, pred_base_adj, average="binary", zero_division=0
     )
